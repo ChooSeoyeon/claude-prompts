@@ -1,5 +1,5 @@
 # Claude Session Manager Commands Setup
-`v1.0.0`
+`v1.1.0`
 
 Create the following three custom command files in `~/.claude/commands/`.
 
@@ -101,16 +101,31 @@ Search through conversation files in the current project by content.
    - If "after YYYY-MM-DD": on macOS use `touch -t YYYYMMDD0000 /tmp/ref_date` then `find ~/.claude/projects/<encoded-pwd>/ -name "*.jsonl" -newer /tmp/ref_date`
    - If omitted: all `.jsonl` files in the project dir
 
-4. Search for the term in those files:
+4. Search for the term **only in user messages**. Use python3 to parse JSONL and filter:
    ```
-   grep -rl "<search-term>" <filtered files>
+   python3 -c "
+   import json, sys, re
+   pattern = sys.argv[1]
+   for line in open(sys.argv[2]):
+       try:
+           obj = json.loads(line)
+           # Only check user-role messages (not assistant, not thinking, not tool results)
+           msg = obj.get('message', {})
+           if msg.get('role') != 'user':
+               continue
+           content = msg.get('content', '')
+           if isinstance(content, list):
+               text = ' '.join(c.get('text', '') for c in content if isinstance(c, dict) and c.get('type') == 'text')
+           else:
+               text = str(content)
+           if re.search(pattern, text, re.IGNORECASE):
+               print(text[:200])
+       except: pass
+   " "<search-term>" <file>
    ```
+   Run this for each candidate file to find matches.
 
-5. For each matching file, show a snippet:
-   ```
-   grep -o '.\{0,80\}<search-term>.\{0,80\}' <file> | head -3
-   ```
-   Parse JSON to extract readable text from `"text":` or `"content":` fields if possible.
+5. For each matching file, show a snippet of the matched user message (the text printed by the python3 command above).
 
 6. Display results as a numbered list:
    ```
