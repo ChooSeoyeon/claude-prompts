@@ -21,7 +21,7 @@ Print the current session ID.
    Session ID: <uuid>
 
    To resume this session from another project (run inside claude after switching projects):
-   /import-session <uuid>
+   /session-import <uuid>
 
    To delete this session (exit Claude with Ctrl+C first, then run in terminal):
    rm ~/.claude/projects/<encoded-pwd>/<uuid>.jsonl
@@ -30,7 +30,7 @@ Print the current session ID.
 
 ---
 
-## 2. `~/.claude/commands/import-session.md`
+## 2. `~/.claude/commands/session-import.md`
 
 ````
 Copy a session file from another project into the current project.
@@ -81,7 +81,7 @@ Argument: $ARGUMENTS (session ID or none)
 
 ---
 
-## 3. `~/.claude/commands/search-session.md`
+## 3. `~/.claude/commands/session-search.md`
 
 ````
 Search through conversation files in the current project by content.

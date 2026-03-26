@@ -3,8 +3,8 @@
 Three custom commands to search, resume, and import Claude Code sessions across projects.
 
 - `/session-info` — View current session ID + delete command
-- `/search-session` — Search session content in current project + resume command
-- `/import-session` — Copy a session from another project to the current one
+- `/session-search` — Search session content in current project + resume command
+- `/session-import` — Copy a session from another project to the current one
 
 ---
 
@@ -28,7 +28,7 @@ Output:
 Session ID: 69d9529b-df37-4745-a92c-5dc384e59576
 
 To resume this session from another project (run inside claude after switching projects):
-/import-session 69d9529b-df37-4745-a92c-5dc384e59576
+/session-import 69d9529b-df37-4745-a92c-5dc384e59576
 
 To delete this session (exit Claude with Ctrl+C first, then run in terminal):
 rm ~/.claude/projects/-Users-yourname-myrepo/69d9529b-df37-4745-a92c-5dc384e59576.jsonl
@@ -38,7 +38,7 @@ rm ~/.claude/projects/-Users-yourname-myrepo/69d9529b-df37-4745-a92c-5dc384e5957
 
 Input:
 ```
-/search-session
+/session-search
 → http server / last 7 days
 ```
 
@@ -54,7 +54,7 @@ Output:
 
 Input:
 ```
-/import-session 69d9529b-df37-4745-a92c-5dc384e59576
+/session-import 69d9529b-df37-4745-a92c-5dc384e59576
 ```
 
 Output:

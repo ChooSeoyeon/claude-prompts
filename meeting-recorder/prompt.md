@@ -185,12 +185,12 @@ txt_file = os.path.join(TXT_DIR, f"meeting_{timestamp}.txt")
 print(f"\nSaved: {txt_file}")
 print(f"\n── Translate in Claude Code ──")
 print(f"{DEFAULT_LANG_NAME} translation")
-print(f"/translate-meeting {txt_file} {DEFAULT_LANG}")
+print(f"/meeting-translate {txt_file} {DEFAULT_LANG}")
 print(f"\nView original")
-print(f"/translate-meeting {txt_file} en")
+print(f"/meeting-translate {txt_file} en")
 ```
 
-### 4-4. Create ~/.claude/commands/translate-meeting.md
+### 4-4. Create ~/.claude/commands/meeting-translate.md
 
 Create the file with the following content:
 
@@ -198,11 +198,11 @@ Create the file with the following content:
 The user will provide a .txt file path and optionally a language code as arguments.
 
 Usage:
-- `/translate-meeting file.txt tr` → Turkish
-- `/translate-meeting file.txt en` → English
-- `/translate-meeting file.txt ko` → Korean
+- `/meeting-translate file.txt tr` → Turkish
+- `/meeting-translate file.txt en` → English
+- `/meeting-translate file.txt ko` → Korean
 - Other language codes like ja, de, ru, el, etc. are also supported
-- `/translate-meeting file.txt` (no language code) → use default language (ko)
+- `/meeting-translate file.txt` (no language code) → use default language (ko)
 
 Steps:
 
@@ -265,7 +265,7 @@ alias record-meeting="python3 ~/Meetings/record.py"
 ── Usage ──
 Before meeting:  record-meeting
 When done:       Ctrl+C → saves MP3 → restores audio → Whisper transcribes → saves txt
-Translate:       /translate-meeting ~/Meetings/txt/meeting_filename.txt {DEFAULT_LANG}
+Translate:       /meeting-translate ~/Meetings/txt/meeting_filename.txt {DEFAULT_LANG}
 Change settings: /meeting-config
 ```
 

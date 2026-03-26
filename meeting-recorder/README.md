@@ -25,8 +25,8 @@ When done:      Ctrl+C
 
 **Claude Code**
 ```
-View translation: /translate-meeting ~/Meetings/txt/meeting_filename.txt tr
-View original:    /translate-meeting ~/Meetings/txt/meeting_filename.txt en
+View translation: /meeting-translate ~/Meetings/txt/meeting_filename.txt tr
+View original:    /meeting-translate ~/Meetings/txt/meeting_filename.txt en
 Change settings:  /meeting-config
 ```
 
@@ -57,7 +57,7 @@ You can start using it right after setup. This section is for those curious abou
 
 1. Run `record-meeting` in terminal — records system audio + mic simultaneously → saves as `.mp3`
 2. After stopping (Ctrl+C), Whisper runs automatically → transcribes to `.txt` (in the meeting language)
-3. Run `/translate-meeting file.txt tr` in Claude Code → translates to your configured language
+3. Run `/meeting-translate file.txt tr` in Claude Code → translates to your configured language
 4. Use `/meeting-config` to change meeting language / translation language
 
 **Runs locally (free):**
